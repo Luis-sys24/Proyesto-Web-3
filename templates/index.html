@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Asistencia Escolar</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+
+</head>
+<body>
+    <h1>Bienvenido al Sistema de Registro de Asistencia Escolar</h1>
+
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('alumnos') }}">Alumnos</a></li>
+            <li><a href="{{ url_for('profesores') }}">Profesores</a></li>
+            <li><a href="{{ url_for('clases') }}">Clases</a></li>
+            <li><a href="{{ url_for('asistencia') }}">Asistencias</a></li>
+        </ul>
+    </nav>
+
+    <p>Selecciona una opción del menú para comenzar.</p>
+</body>
+</html>

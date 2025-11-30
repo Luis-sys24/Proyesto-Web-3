@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profesores</title>
+</head>
+<body>
+
+<h1>Lista de Profesores</h1>
+<h5><a href="{{ url_for('index') }}">Inicio</a></h5>
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Email</th>
+        <th>Materia</th>
+        <th>Acciones</th>
+    </tr>
+
+    {% for profesor in profesores %}
+    <tr>
+        <td>{{ profesor.id_profesor }}</td>
+        <td>{{ profesor.nombre }}</td>
+        <td>{{ profesor.email }}</td>
+        <td>{{ profesor.materia }}</td>
+        <td>
+            <a href="{{ url_for('eliminar_profesor', id_profesor=profesor.id_profesor) }}">
+                Eliminar
+            </a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<hr>
+
+<h2>Agregar Profesor</h2>
+
+<form action="{{ url_for('agregar_profesor') }}" method="POST">
+    <label>Nombre:</label>
+    <input type="text" name="nombre" required><br>
+
+    <label>Email:</label>
+    <input type="email" name="email" required><br>
+
+    <label>Materia:</label>
+    <input type="text" name="materia" required><br>
+
+    <button type="submit">Agregar</button>
+</form>
+
+</body>
+</html>

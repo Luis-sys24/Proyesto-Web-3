@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Nueva Asistencia</title>
+</head>
+<body>
+
+<h1>Registrar Asistencia</h1>
+
+
+<form action="{{ url_for('asistencia_agregar') }}" method="POST">
+
+    <label>Alumno:</label>
+    <select name="id_alumno" required>
+        {% for al in alumnos %}
+        <option value="{{ al.id_alumno }}">{{ al.nombre }}</option>
+        {% endfor %}
+    </select>
+    <br><br>
+
+    <label>Clase:</label>
+    <select name="id_clase" required>
+        {% for c in clases %}
+        <option value="{{ c.id_clase }}">{{ c.nombre_clase }}</option>
+        {% endfor %}
+    </select>
+    <br><br>
+
+    <label>Fecha:</label>
+    <input type="date" name="fecha" required>
+    <br><br>
+
+    <label>Presente:</label>
+    <input type="checkbox" name="presente" value="1">
+    <br><br>
+
+    <button type="submit">Guardar</button>
+</form>
+
+<br>
+<a href="{{ url_for('asistencia') }}">Volver</a>
+
+</body>
+</html>

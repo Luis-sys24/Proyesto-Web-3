@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Asistencias</title>
+</head>
+<body>
+
+<h1>Registro de Asistencias</h1>
+<h4><a href="{{ url_for('index') }}">Inicio</a></h4>
+<a href="{{ url_for('asistencia_nueva') }}">Registrar nueva asistencia</a>
+
+<table border="1" cellpadding="5">
+    <tr>
+        <th>ID</th>
+        <th>Alumno</th>
+        <th>Clase</th>
+        <th>Fecha</th>
+        <th>Presente</th>
+    </tr>
+
+    {% for a in asistencias %}
+    <tr>
+        <td>{{ a.id_asistencia }}</td>
+        <td>{{ a.alumno }}</td>
+        <td>{{ a.clase }}</td>
+        <td>{{ a.fecha }}</td>
+        <td>
+            {% if a.presente == 1 %}
+                ✔ Presente
+            {% else %}
+                ✘ Ausente
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>

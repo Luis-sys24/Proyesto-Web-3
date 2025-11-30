@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Alumnos</title>
+</head>
+<body>
+    <h1>Listado de Alumnos</h1>
+    <a href="{{ url_for('index') }}">Inicio</a>
+    <a href="{{ url_for('agregar_alumno') }}">Agregar alumno</a>
+    <br><br>
+
+    <table border="1">
+        <tr>
+            <th>ID</th><th>Nombre</th><th>Edad</th><th>Curso</th><th>Acciones</th>
+        </tr>
+
+        {% for a in alumnos %}
+        <tr>
+            <td>{{ a.id }}</td>
+            <td>{{ a.nombre }}</td>
+            <td>{{ a.edad }}</td>
+            <td>{{ a.curso }}</td>
+            <td>
+                <a href="/alumnos/editar/{{ a.id }}">Editar</a> |
+                <a href="/alumnos/eliminar/{{ a.id }}">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>

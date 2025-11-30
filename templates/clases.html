@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Clases</title>
+</head>
+<body>
+    <h1>Listado de Clases</h1>
+    <a href="{{ url_for('index') }}">Inicio</a>
+    <br><br>
+
+    <!-- Mostrar mensajes -->
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    <!-- Tabla -->
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Nombre de la Clase</th>
+            <th>Profesor</th>
+            <th>Acciones</th>
+        </tr>
+
+        {% for clase in clases %}
+        <tr>
+            <td>{{ clase.id_clase }}</td>
+            <td>{{ clase.nombre_clase }}</td>
+            <td>{{ clase.profesor }}</td>
+            <td>
+                <a href="{{ url_for('eliminar_clase', id_clase=clase.id_clase) }}">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <hr>
+
+    <h2>Agregar Clase</h2>
+    <form method="POST" action="{{ url_for('agregar_clase') }}">
+        <label>Nombre de la clase:</label>
+        <input type="text" name="nombre_clase" required><br><br>
+
+        <label>Profesor:</label>
+        <select name="id_profesor" required>
+            {% for prof in profesores %}
+                <option value="{{ prof.id_profesor }}">{{ prof.nombre }}</option>
+            {% endfor %}
+        </select>
+
+        <br><br>
+        <button type="submit">Agregar</button>
+    </form>
+
+</body>
+</html>
